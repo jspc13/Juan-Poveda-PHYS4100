@@ -55,13 +55,11 @@ def bisection(guess1,guess2,even=True):
         print("Your guesses have the same sign")
     return 0.5 * (x1+x2)
 
-#to do:
-#save figure
-#calculate the six values using the bisection fuction
+print("According to the graph, the first set of even points guesses are: 2 and 3.26, which gives us the first energy level:", bisection(2,3.26))
+print("According to the graph, the second set of even points guesses are: 6.3 and 9, which gives us the second energy level:", bisection(6.3,9))
+print("According to the graph, the thrid set of even points guesses are: 13 and 17.6, which gives us the third energy level:", bisection(13,17.6))
+print("According to the graph, the first set of odd points guesses are: 0.5 and 2.2, which gives us the fourth energy level:", bisection(0.5,2.2))
+print("According to the graph, the second set of odd points guesses are: 3.8 and 6.4, which gives us the fifth energy level:", bisection(3.8,6.4))
+print("According to the graph, the third set of odd points guesses are: 9.9 and 12.6, which gives us the sixth energy level:", bisection(9.9,12.6))
 
-#Even points 1: 2,3.26
-#2: 6.3,9
-#3: 13,17.6
-
-print("The first six energy levels are:", )
 
