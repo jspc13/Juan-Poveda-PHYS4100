@@ -43,3 +43,6 @@ def animate(i):
 anim = animation.FuncAnimation(fig, animate, init_func=init, frames=360, interval=20, blit=True)
 writergif = animation.PillowWriter(fps=30)
 anim.save('particle_moving.gif', writer=writergif)
+
+#to do:
+#animation not working
