@@ -27,7 +27,7 @@ for i in range(N):
 #plt.show()
 fig = plt.figure(figsize=(5,5))
 ax = plt.axes(xlim=(0,100), ylim=(0,100))
-particle = plt.Circle((50,50), radius=0.01)
+particle = plt.Circle((50,50), radius=1)
 
 def init():
     particle.center = (50,50)
@@ -43,6 +43,3 @@ def animate(i):
 anim = animation.FuncAnimation(fig, animate, init_func=init, frames=360, interval=20, blit=True)
 writergif = animation.PillowWriter(fps=30)
 anim.save('particle_moving.gif', writer=writergif)
-
-#to do:
-#animation not working
