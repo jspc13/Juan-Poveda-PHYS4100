@@ -1,9 +1,5 @@
 import numpy as np
-
-#def acceleration():
-    #acceleration_along_x = ((-1 * np.pi * r**2 * rho * C * Vx) / (2 * m)) * np.sqrt(Vx**2 + Vy**2)
-    #acceleration_along_y = - g - (((-1 * np.pi * r**2 * rho * C * Vy) / (2 * m)) * np.sqrt(Vx**2 + Vy**2))
-    #return 
+import matplotlib.pyplot as plt
 
 h = 3 # in seconds
 t_array = np.arange(0,100,h)
@@ -20,14 +16,20 @@ y_initial = 0
 Vx_initial = Velocity_ball * np.cos(angle_thetta)
 Vy_initial = Velocity_ball * np.sin(angle_thetta)
 
-def f(x_initial,y_initial,Vx_initial,Vy_initial):
-    return ((-1 * np.pi * radius**2 * density_air * coefficient_of_drag * Vx_initial) / (2 * mass)) * np.sqrt(Vx_initial**2 + Vy_initial**2)
+def f(r):
+    dx_dt = r[2]
+    dy_dt = r[3]
+    dVx_dt = ((-1 * np.pi * radius**2 * density_air * coefficient_of_drag * r[2]) / (2 * mass)) * np.sqrt(r[2]**2 + r[3]**2)
+    dVy_dt = -gravity + (((-1 * np.pi * radius**2 * density_air * coefficient_of_drag * r[3]) / (2 * mass)) * np.sqrt(r[2]**2 + r[3]**2))
+    return np.array([dx_dt, dy_dt, dVx_dt, dVy_dt])
 
-x = np.zeros(len(t_array)+1)
-y = np.zeros(len(t_array)+1)
-Vx = np.zeros(len(t_array)+1)
-Vy = np.zeros(len(t_array)+1)
-for i,t in enumerate(t_array):
-    x[i+1] = x[i] + h * 
+r = [x_initial,y_initial,Vx_initial,Vy_initial]
+r_points = np.zeros((len(t_array),4))
+for i in t_array:
+    r_points[i] = r
+    k1 = h*f(r)
+    k2 = h*f(r+0.5*k1)
+    r = r + k2
 
+print(r_points)
 
