@@ -1,12 +1,12 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-h = 3 # in seconds
+h = 0.01 # in seconds
 t_array = np.arange(0,100,h)
 #define initial conditons
 mass = 1
 radius = 0.08 
-angle_thetta = 30 # angle wrt to the horizontal
+angle_thetta = np.radians(30) # angle wrt to the horizontal
 Velocity_ball = 100
 density_air = 1.22 # density of air
 coefficient_of_drag = 0.47 # coefficient of drag for a sphere
@@ -25,11 +25,13 @@ def f(r):
 
 r = [x_initial,y_initial,Vx_initial,Vy_initial]
 r_points = np.zeros((len(t_array),4))
-for i in t_array:
+
+for i in range(len(t_array)):
     r_points[i] = r
     k1 = h*f(r)
     k2 = h*f(r+0.5*k1)
     r = r + k2
 
-print(r_points)
-
+print(r_points.shape)
+plt.plot(r_points[:,0],r_points[:,1])
+plt.show()
