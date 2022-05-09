@@ -34,4 +34,5 @@ for i in range(len(t_array)):
 
 print(r_points.shape)
 plt.plot(r_points[:,0],r_points[:,1])
+plt.ylim(bottom=0)
 plt.show()
