@@ -3,11 +3,11 @@ import matplotlib.pyplot as plt
 
 #define initial conditions
 l = 0.1 # in meters
-theta_initial = np.radians(179)
+theta_initial = np.radians(150)
 gravity = 9.8
 omega_initial = (-1) * gravity / l * np.sin(theta_initial)
-h = 0.1 # in seconds
-t_array = np.arange(0,100,h)
+h = 0.09 # in seconds
+t_array = np.arange(0,6,h)
 
 def f(r):
     dthetadt = r[1]
@@ -29,5 +29,5 @@ def runge_kutta():
 run1 = runge_kutta()
 #print(run1)
 
-plt.plot(run1[:,0], t_array, linewidth = 1)
+plt.plot(t_array, run1[:,0], linewidth = 1)
 plt.show()
