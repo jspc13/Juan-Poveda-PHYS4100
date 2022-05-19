@@ -15,14 +15,17 @@ gravitational_constant = 6.67e-11 # Newton's Gravitational Constant
 mass_earth = 5.972e24
 radius_earth = 6.37e6
 distance_from_radius = 500 # distance covered by the rocket outside of the Earth, in meters
-vx_initial = 0.1
-vy_initial = 0.1
+deltaV = 1/initial_mass_rocket * v_exhaust_rocket * np.absolute(dmdt_rocket) * 1
+initial_angle = np.radians(30)
+vx_initial = deltaV * np.cos(initial_angle)
+vy_initial = deltaV * np.sin(initial_angle)
 x_initial = 0
 y_initial = 0
 h = 0.01
-t = np.arange(0,2*h,h)
+t = np.arange(0,30,h)
 v_0 = 0 
 
+print(vx_initial, vy_initial)
 #mass_model_rocket = initial_mass_model_rocket + dmass_model_rocketdt*t
 
 #def model_rocket(r):
@@ -55,10 +58,11 @@ def runge_kutta(initial_mass, v_exhaust, dmdt, drag_coefficient):
 run1 = runge_kutta(initial_mass_rocket, v_exhaust_rocket, dmdt_rocket, drag_coefficient_rocket)
 V = np.sqrt(run1[:,3]**2 + run1[:,4]**2)
 print(run1)
-plt.plot(t, run1[:,4])
+
+#plt.plot(run1[:,3], run1[:,4])
 #plt.plot(t, V)
+#plt.plot(run1[:,1], run1[:,2])
 #plt.ylim(bottom=0)
 #plt.plot(t,v)
 plt.show()
 
-#need to make runga a function, add the mass argument just like for the lab exercise. Maybe also would be good to add thrust, gravity and drag as arguments of the f(x) function
