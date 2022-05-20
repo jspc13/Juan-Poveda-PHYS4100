@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 
 #Define Constants
 initial_mass_model_rocket = 0.05 # in kg
-dmdt_model_rocket = -0.002 #mass burn rate in Kg/s
-v_exhaust_model_rocket = -7500
+dmdt_model_rocket = -0.02 #mass burn rate in Kg/s
+v_exhaust_model_rocket = -2000
 thrust_model_rocket = 15 # in N
 drag_coefficient_model_rocket = 0.02
 initial_angle = np.radians(30)
@@ -26,17 +26,19 @@ vy_initial_rocket = deltaV_rocket * np.sin(initial_angle)
 x_initial = 0
 y_initial = 0
 h_rocket = 0.1
-t_rocket = np.arange(0,20,h_rocket)
+t_rocket = np.arange(0,160,h_rocket)
 h_model_rocket = 0.01
 t_model_rocket = np.arange(0,20,h_model_rocket)
 v_0 = 0 
+
+#g = gravitational_constant*((mass*mass_earth)/(radius_earth+distance_from_radius)**2)
 
 def rocket(r, v_exhaust, dmdt, drag_coefficient):
     mass = r[0]
     dxdt = r[3]
     dydt = r[4]
     dvxdt = (1 / mass) * ((r[3]/np.sqrt(r[3]**2 + r[4]**2) * v_exhaust * (dmdt)) - (drag_coefficient*r[3]*np.sqrt(r[3]**2 + r[4]**2)) - (r[3]*dmdt))
-    dvydt = (1 / mass) * ((r[4]/np.sqrt(r[3]**2 + r[4]**2) * v_exhaust * (dmdt)) - (gravitational_constant*((mass*mass_earth)/(radius_earth+distance_from_radius)**2)) - (drag_coefficient*r[4]*np.sqrt(r[3]**2 + r[4]**2)) - (r[4]*dmdt))
+    dvydt = (1 / mass) * ((r[4]/np.sqrt(r[3]**2 + r[4]**2) * v_exhaust * (dmdt)) - (gravity) - (drag_coefficient*r[4]*np.sqrt(r[3]**2 + r[4]**2)) - (r[4]*dmdt))
     return np.array([dmdt, dxdt, dydt, dvxdt, dvydt])
 
 def runge_kutta(initial_mass, vx_initial, vy_initial, t, h, v_exhaust, dmdt, drag_coefficient):
@@ -66,7 +68,7 @@ ax[0,1].set_xlabel('Time (s)')
 ax[0,1].set_ylabel('X (m)')
 ax[0,1].set_title('Position X vs Time Model Rocket')
 ax[0,2].plot(t_model_rocket, run1[:,2]) # y vs time
-ax[0,2].set_ylim(0,20)
+#ax[0,2].set_ylim(0,20)
 ax[0,2].set_xlabel('Time (s)')
 ax[0,2].set_ylabel('Y (m)')
 ax[0,2].set_title('Position Y vs Time Model Rocket')
@@ -84,7 +86,7 @@ ax[1,1].set_xlabel('Time (s)')
 ax[1,1].set_ylabel('X (m)')
 ax[1,1].set_title('Position X vs Time Rocket')
 ax[1,2].plot(t_rocket, run2[:,2]) # y vs time
-ax[1,2].set_ylim(0,20)
+#ax[1,2].set_ylim(0,20)
 ax[1,2].set_xlabel('Time (s)')
 ax[1,2].set_ylabel('Y (m)')
 ax[1,2].set_title('Position Y vs Time Rocket')
