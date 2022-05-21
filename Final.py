@@ -2,13 +2,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 #Define Constants
-initial_mass_model_rocket = 0.05 # in kg
-dmdt_model_rocket = -0.02 #mass burn rate in Kg/s
-v_exhaust_model_rocket = -2000
+initial_mass_model_rocket = 0.005 # in kg
+dmdt_model_rocket = -0.0002 #mass burn rate in Kg/s
+v_exhaust_model_rocket = -15000
 thrust_model_rocket = 15 # in N
 drag_coefficient_model_rocket = 0.02
 initial_angle = np.radians(30)
-deltaV_model_rocket = 1/initial_mass_model_rocket * v_exhaust_model_rocket * dmdt_model_rocket * 1e-6
+deltaV_model_rocket = 1/initial_mass_model_rocket * v_exhaust_model_rocket * dmdt_model_rocket * 1
 vx_initial_model_rocket = deltaV_model_rocket * np.cos(initial_angle)
 vy_initial_model_rocket = deltaV_model_rocket * np.sin(initial_angle)
 initial_mass_rocket = 2030000 # in Kg
