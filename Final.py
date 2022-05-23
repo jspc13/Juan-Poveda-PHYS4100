@@ -95,6 +95,6 @@ ax[1,3].plot(t_rocket, V_rocket) # V vs time
 ax[1,3].set_xlabel('Time (s)')
 ax[1,3].set_ylabel('V (m/s)')
 ax[1,3].set_title('Velocity vs Time Rocket')
-plt.subplots_adjust(wspace=0.8, hspace=0.5) #adjust width and height between plots
+plt.subplots_adjust(wspace=0.6, hspace=0.5) #adjust width and height between plots
 plt.show()
 
