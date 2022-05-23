@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-#Define Constants
+#Define Constants / set some variables
 initial_mass_model_rocket = 0.9 # in kg
 dmdt_model_rocket = -0.02 #mass burn rate in Kg/s
 v_exhaust_model_rocket = -18000
