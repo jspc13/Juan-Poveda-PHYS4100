@@ -2,19 +2,19 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 #Define Constants
-initial_mass_model_rocket = 0.005 # in kg
+initial_mass_model_rocket = 0.05 # in kg
 dmdt_model_rocket = -0.0002 #mass burn rate in Kg/s
-v_exhaust_model_rocket = -15000
+v_exhaust_model_rocket = -20000
 thrust_model_rocket = 15 # in N
 drag_coefficient_model_rocket = 0.02
 initial_angle = np.radians(30)
-deltaV_model_rocket = 1/initial_mass_model_rocket * v_exhaust_model_rocket * dmdt_model_rocket * 1
+deltaV_model_rocket = 1/initial_mass_model_rocket * v_exhaust_model_rocket * dmdt_model_rocket * 1e-8
 vx_initial_model_rocket = deltaV_model_rocket * np.cos(initial_angle)
 vy_initial_model_rocket = deltaV_model_rocket * np.sin(initial_angle)
 initial_mass_rocket = 2030000 # in Kg
 dmdt_rocket = -4989.5 # mass burn rate Kg/s
 v_exhaust_rocket = -5142 # velocity of exhaust in m/s
-drag_coefficient_rocket = 0.1
+drag_coefficient_rocket = 0.9
 gravity = 9.8
 gravitational_constant = 6.67e-11 # Newton's Gravitational Constant
 mass_earth = 5.972e24
@@ -26,11 +26,12 @@ vy_initial_rocket = deltaV_rocket * np.sin(initial_angle)
 x_initial = 0
 y_initial = 0
 h_rocket = 0.1
-t_rocket = np.arange(0,160,h_rocket)
-h_model_rocket = 0.01
-t_model_rocket = np.arange(0,20,h_model_rocket)
+t_rocket = np.arange(0,200,h_rocket)
+h_model_rocket = 0.0001
+t_model_rocket = np.arange(0,5,h_model_rocket)
 v_0 = 0 
 
+#print(vx_initial_model_rocket, vy_initial_model_rocket)
 #g = gravitational_constant*((mass*mass_earth)/(radius_earth+distance_from_radius)**2)
 
 def rocket(r, v_exhaust, dmdt, drag_coefficient):
