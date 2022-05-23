@@ -2,11 +2,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 #Define Constants
-initial_mass_model_rocket = 0.05 # in kg
-dmdt_model_rocket = -0.0002 #mass burn rate in Kg/s
-v_exhaust_model_rocket = -20000
+initial_mass_model_rocket = 0.9 # in kg
+dmdt_model_rocket = -0.02 #mass burn rate in Kg/s
+v_exhaust_model_rocket = -18000
 thrust_model_rocket = 15 # in N
-drag_coefficient_model_rocket = 0.02
+drag_coefficient_model_rocket = 0.09
 initial_angle = np.radians(30)
 deltaV_model_rocket = 1/initial_mass_model_rocket * v_exhaust_model_rocket * dmdt_model_rocket * 1e-8
 vx_initial_model_rocket = deltaV_model_rocket * np.cos(initial_angle)
@@ -69,7 +69,7 @@ ax[0,1].set_xlabel('Time (s)')
 ax[0,1].set_ylabel('X (m)')
 ax[0,1].set_title('Position X vs Time Model Rocket')
 ax[0,2].plot(t_model_rocket, run1[:,2]) # y vs time
-#ax[0,2].set_ylim(0,20)
+ax[0,2].set_ylim(0,20)
 ax[0,2].set_xlabel('Time (s)')
 ax[0,2].set_ylabel('Y (m)')
 ax[0,2].set_title('Position Y vs Time Model Rocket')
@@ -96,5 +96,5 @@ ax[1,3].set_xlabel('Time (s)')
 ax[1,3].set_ylabel('V (m/s)')
 ax[1,3].set_title('Velocity vs Time Rocket')
 plt.subplots_adjust(wspace=0.5, hspace=0.5) #adjust width and height between plots
-plt.show()
+#plt.show()
 
